@@ -1,0 +1,17 @@
+<div class="ui top fixed menu">
+  <div class="ui icon item">
+    <i class="wait icon"></i>
+  </div>
+  <a class="item" [routerLink]="['/']">
+    Home
+  </a>
+  <a class="item" [routerLink]="['/clock']">
+    Clock
+  </a>
+  <a class="item" [routerLink]="['/developer']">
+    Developer
+  </a>
+</div>
+<div style="padding-top: 3em">
+  <router-outlet></router-outlet>
+</div>

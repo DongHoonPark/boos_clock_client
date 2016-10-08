@@ -1,0 +1,60 @@
+<div class="ui container">
+  <div class="ui horizontal segments">
+    <div class="ui teal segment">
+      <h1 class="ui center aligned huge header" style="font-size: 500%">
+        {{hour}}시
+      </h1>
+    </div>
+    <div class="ui teal segment">
+      <h1 class="ui center aligned huge header" style="font-size: 500%">
+        {{minute}}분
+      </h1>
+    </div>
+    <div class="ui teal segment">
+      <h1 class="ui center aligned huge header" style="font-size: 500%">
+        {{second}}초
+      </h1>
+    </div>
+  </div>
+
+  <sm-progress class="teal" [progress]="millis/10"></sm-progress>
+
+
+  <div class="ui left action input" >
+    <button class="ui teal labeled icon button" (click)="sync()">
+      <i class="refresh icon"></i>
+      Synchronize
+    </button>
+    <input type="text" value="sugang.snu.ac.kr" [(ngModel)]="gts.serverUrl">
+  </div>
+
+  <div *ngIf="gts.errorMessage.length" class="ui red message">
+    <i class="remove icon"></i>
+    <div class="content">
+      There was some wrong..
+    </div>
+    <p>{{gts.errorMessage}}</p>
+  </div>
+  <div *ngIf="gts.isRequesting" class="ui yellow message">
+    <i class="notched circle loading icon"></i>
+    <div class="content">
+      Just one second
+    </div>
+    <p>Investigating server responses..</p>
+  </div>
+  <div *ngIf="gts.timeDelay == 0" class="ui blue icon message">
+    <i class="alarm outline icon"></i>
+    <div class="content">
+      Please press the synchronize button
+    </div>
+    <p>to sync your local time to server time</p>
+  </div>
+  <div *ngIf="gts.timeDelay != 0" class="ui teal icon message">
+    <i class="idea icon"></i>
+    <div class="content">
+      Server time is {{gts.timeDelay}} ms after local time
+    </div>
+    <p>time is synchronized</p>
+  </div>
+</div>
+
